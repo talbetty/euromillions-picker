@@ -32,17 +32,33 @@
         let mainSelected = [];
         let starSelected = [];
 
-        // 50 Animal Images (Stable Pixabay Links)
-        const animalImages = Array.from({ length: 50 }, (_, i) => ({
-            url: `https://cdn.pixabay.com/photo/2016/03/31/19/56/animal-${i + 1}.jpg`,
-            number: i + 1
-        }));
+        // 50 Animal Images (Real Public URLs)
+        const animalImages = [
+            { url: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg", number: 1 },
+            { url: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Dog_puppy.jpg", number: 2 },
+            { url: "https://upload.wikimedia.org/wikipedia/commons/3/32/Giraffe.jpg", number: 3 },
+            { url: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Tiger_in_Ranthambhore.jpg", number: 4 },
+            { url: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Elephant_herd.jpg", number: 5 },
+            { url: "https://cdn.pixabay.com/photo/2017/01/31/14/26/lion-2028819_1280.jpg", number: 6 },
+            { url: "https://cdn.pixabay.com/photo/2016/03/31/19/56/zebra-1290079_1280.jpg", number: 7 },
+            { url: "https://cdn.pixabay.com/photo/2018/02/10/22/57/fox-3140764_1280.jpg", number: 8 },
+            { url: "https://cdn.pixabay.com/photo/2015/09/01/18/54/owl-918442_1280.jpg", number: 9 },
+            { url: "https://cdn.pixabay.com/photo/2016/07/18/14/27/raccoon-1522830_1280.jpg", number: 10 }
+        ];
 
-        // 12 Food Images (Stable Pixabay Links)
-        const foodImages = Array.from({ length: 12 }, (_, i) => ({
-            url: `https://cdn.pixabay.com/photo/2016/03/31/19/56/food-${i + 1}.jpg`,
-            number: i + 1
-        }));
+        // 12 Food Images (Real Public URLs)
+        const foodImages = [
+            { url: "https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg", number: 1 },
+            { url: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg", number: 2 },
+            { url: "https://upload.wikimedia.org/wikipedia/commons/3/39/Pizza.jpg", number: 3 },
+            { url: "https://upload.wikimedia.org/wikipedia/commons/4/45/Ice_cream_cone.jpg", number: 4 },
+            { url: "https://upload.wikimedia.org/wikipedia/commons/0/04/Chocolate_cake_with_whipped_cream_and_chocolate_chips.jpg", number: 5 },
+            { url: "https://cdn.pixabay.com/photo/2016/07/28/21/19/salad-1544023_1280.jpg", number: 6 },
+            { url: "https://cdn.pixabay.com/photo/2015/04/08/13/13/cheeseburger-712662_1280.jpg", number: 7 },
+            { url: "https://cdn.pixabay.com/photo/2016/04/15/08/05/breakfast-1330943_1280.jpg", number: 8 },
+            { url: "https://cdn.pixabay.com/photo/2015/03/26/10/01/strawberry-690186_1280.jpg", number: 9 },
+            { url: "https://cdn.pixabay.com/photo/2017/03/27/14/34/spaghetti-2178267_1280.jpg", number: 10 }
+        ];
 
         // Function to shuffle images (random order every refresh)
         function shuffle(array) {
