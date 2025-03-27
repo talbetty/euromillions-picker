@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EuroMillions Picker</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { max-width: 800px; margin: auto; }
+        .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+        .image-option { cursor: pointer; padding: 10px; border: 2px solid transparent; width: 80px; height: 80px; }
+        .selected { border: 2px solid red; }
+        #result { margin-top: 20px; font-size: 1.2em; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Pick Your EuroMillions Numbers</h1>
+    <p>Select 5 main numbers (animals) and 2 lucky stars (foods)</p>
+    
+    <div class="container">
+        <h2>Main Numbers (Animals)</h2>
+        <div id="main-grid" class="grid"></div>
+
+        <h2>Lucky Stars (Foods)</h2>
+        <div id="star-grid" class="grid"></div>
+
+        <button onclick="generateTicket()">Generate Ticket</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        const mainNumbers = 50;
+        const luckyStars = 12;
+        let mainSelected = [];
+        let starSelected = [];
+
+        // 50 Animal Images
+        const animalImages = Array.from({ length: 50 }, (_, i) => ({
+            url: `https://source.unsplash.com/80x80/?animal,${i}`,
+            number: i + 1
+        }));
+
+        // 12 Food Images
+        const foodImages = Array.from({ length: 12 }, (_, i) => ({
+            url: `https://source.unsplash.com/80x80/?food,${i}`,
+            number: i + 1
+        }));
+
+        // Function to shuffle the images
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Shuffle both sets of images so numbers are random each time
+        shuffle(animalImages);
+        shuffle(foodImages);
+
+        function createGrid(gridId, images, isStar) {
+            const grid = document.getElementById(gridId);
+            images.forEach(({ url, number }) => {
+                let img = document.createElement('img');
+                img.src = url;
+                img.alt = number;
+                img.classList.add('image-option');
+                img.onclick = () => selectNumber(number, img, isStar);
+                grid.appendChild(img);
+            });
+        }
+
+        function selectNumber(num, img, isStar) {
+            let selectedList = isStar ? starSelected : mainSelected;
+            let max = isStar ? 2 : 5;
+
+            if (selectedList.includes(num)) {
+                selectedList.splice(selectedList.indexOf(num), 1);
+                img.classList.remove('selected');
+            } else if (selectedList.length < max) {
+                selectedList.push(num);
+                img.classList.add('selected');
+            }
+        }
+
+        function generateTicket() {
+            if (mainSelected.length === 5 && starSelected.length === 2) {
+                document.getElementById("result").innerText = `Your numbers: ${mainSelected.join(", ")} | Lucky Stars: ${starSelected.join(", ")}`;
+            } else {
+                alert("Please select 5 main numbers and 2 Lucky Stars!");
+            }
+        }
+
+        createGrid("main-grid", animalImages, false);
+        createGrid("star-grid", foodImages, true);
+    </script>
+</body>
+</html>
