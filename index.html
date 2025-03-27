@@ -32,22 +32,22 @@
         let mainSelected = [];
         let starSelected = [];
 
-        // 50 Animal Images (PERMANENT LINKS)
+        // 50 Animal Images (GitHub-hosted)
         const animalImages = [
-            { url: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg", number: 1 },
-            { url: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Dog_puppy.jpg", number: 2 },
-            { url: "https://upload.wikimedia.org/wikipedia/commons/3/32/Giraffe.jpg", number: 3 },
-            { url: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Tiger_in_Ranthambhore.jpg", number: 4 },
-            { url: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Elephant_herd.jpg", number: 5 }
+            { url: "https://raw.githubusercontent.com/talbetty/euromillions-picker/main/cat.png", number: 1 },
+            { url: "https://raw.githubusercontent.com/talbetty/euromillions-picker/main/dog.png", number: 2 },
+            { url: "https://raw.githubusercontent.com/talbetty/euromillions-picker/main/giraffe.png", number: 3 },
+            { url: "https://raw.githubusercontent.com/talbetty/euromillions-picker/main/tiger.png", number: 4 },
+            { url: "https://raw.githubusercontent.com/talbetty/euromillions-picker/main/elephant.png", number: 5 }
         ];
 
-        // 12 Food Images (PERMANENT LINKS)
+        // 12 Food Images (GitHub-hosted)
         const foodImages = [
-            { url: "https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg", number: 1 },
-            { url: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg", number: 2 },
-            { url: "https://upload.wikimedia.org/wikipedia/commons/3/39/Pizza.jpg", number: 3 },
-            { url: "https://upload.wikimedia.org/wikipedia/commons/4/45/Ice_cream_cone.jpg", number: 4 },
-            { url: "https://upload.wikimedia.org/wikipedia/commons/0/04/Chocolate_cake_with_whipped_cream_and_chocolate_chips.jpg", number: 5 }
+            { url: "https://raw.githubusercontent.com/talbetty/euromillions-picker/main/apple.png", number: 1 },
+            { url: "https://raw.githubusercontent.com/talbetty/euromillions-picker/main/banana.png", number: 2 },
+            { url: "https://raw.githubusercontent.com/talbetty/euromillions-picker/main/pizza.png", number: 3 },
+            { url: "https://raw.githubusercontent.com/talbetty/euromillions-picker/main/icecream.png", number: 4 },
+            { url: "https://raw.githubusercontent.com/talbetty/euromillions-picker/main/cake.png", number: 5 }
         ];
 
         // Function to shuffle images (random order every refresh)
@@ -80,23 +80,3 @@
 
             if (selectedList.includes(num)) {
                 selectedList.splice(selectedList.indexOf(num), 1);
-                img.classList.remove('selected');
-            } else if (selectedList.length < max) {
-                selectedList.push(num);
-                img.classList.add('selected');
-            }
-        }
-
-        function generateTicket() {
-            if (mainSelected.length === 5 && starSelected.length === 2) {
-                document.getElementById("result").innerText = `Your numbers: ${mainSelected.join(", ")} | Lucky Stars: ${starSelected.join(", ")}`;
-            } else {
-                alert("Please select 5 main numbers and 2 Lucky Stars!");
-            }
-        }
-
-        createGrid("main-grid", animalImages, false);
-        createGrid("star-grid", foodImages, true);
-    </script>
-</body>
-</html>
